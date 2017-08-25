@@ -26,7 +26,7 @@ env:
     global:
         - PREFIX=$HOME/install
         - PATH=$PREFIX/bin:$PATH
-        - CPPFLAGS="-Werror -Wno-initializer-overrides -Wno-absolute-value -Wno-format-invalid-specifier -I$PREFIX/include"
+        - CPPFLAGS="-I$PREFIX/include"
         - LDFLAGS=-L$PREFIX/lib
         - LD_LIBRARY_PATH=$PREFIX/lib
         - LIBFABRIC_CONFIGURE_ARGS="--prefix=$PREFIX --enable-sockets"
@@ -49,7 +49,7 @@ install:
         --enable-verbs --enable-mlx=$HOME/mlx";
       fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" && "`basename $CC`" == "clang" ]]; then
-        ./configure CFLAGS="-Werror $CFLAGS" $LIBFABRIC_CONFIGURE_ARGS
+        ./configure CFLAGS="$CFLAGS" $LIBFABRIC_CONFIGURE_ARGS
         --enable-debug && make -j2;
       fi
     # Test fabric direct

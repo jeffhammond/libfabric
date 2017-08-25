@@ -26,7 +26,7 @@ env:
     global:
         - PREFIX=$HOME/install
         - PATH=$PREFIX/bin:$PATH
-        - CPPFLAGS="-Werror -Wno-initializer-overrides -I$PREFIX/include"
+        - CPPFLAGS="-Werror -Wno-initializer-overrides -Wno-absolute-value -I$PREFIX/include"
         - LDFLAGS=-L$PREFIX/lib
         - LD_LIBRARY_PATH=$PREFIX/lib
         - LIBFABRIC_CONFIGURE_ARGS="--prefix=$PREFIX --enable-sockets"
